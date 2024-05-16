@@ -1,0 +1,8 @@
+Hibernate generated SQL query and Excute using JDBC.
+ORM-Object relational Mapping(ORM)
+
+Due to limitations of JDBC we can use ORM(Object Relationaltools) which can convert the OOP object to table and store in Database.
+ORM works with tbale and Java works with class.Withe help of ORM tools or Frame like Hibernate it will convert the java class to table with the help of JDBC .We need not to be worry with Sql query . JPA (Java persistance API)  which  is specification of java claas and ORM  as like hibernate is also a JPA .
+
+JPA : The Java Persistance API is a specification of Java.
+ORM : Mapping Java class with Database table.

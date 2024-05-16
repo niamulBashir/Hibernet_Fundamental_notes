@@ -1,0 +1,172 @@
+Maven :
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.telusku.learning</groupId>
+  <artifactId>firstHibernet</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>firstHibernet</name>
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>6.3.0.CR1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.28</version>
+</dependency>
+
+  </dependencies>
+</project>
+
+.........................................................................
+
+
+
+hybernate configuartin file :
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">JDBC:mysql://localhost:3306/jdbclearning</property>
+        <property name="hibernate.connection.password">Ni@mul0707</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+         <property name="hibernate.hbm2ddl.auto">create</property>
+          <property name="hibernate.show_sql">true</property>
+          <property name="hibernate.format_sql">true</property>
+         <mapping class = "com.telusku.model.Student"/>
+    </session-factory>
+</hibernate-configuration>
+
+
+...........................Student_table...................................
+package com.telusku.model;
+
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="StudentInfo3")
+public class Student {
+	@Id
+	@Column(name="SID")
+	private int sid;
+	@Column(name="Sname")
+	private String sname ;
+	
+	@Column (name="Scity")
+	private String scity;
+
+	public Student() {
+		System.out.println("Hello from Hibernate");
+	}
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public String getScity() {
+		return scity;
+	}
+
+	public void setScity(String scity) {
+		this.scity = scity;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", scity=" + scity + "]";
+	}
+	
+
+}
+
+.................................................xxxxxxxxxxxxx..........
+
+Business Logic.............
+
+
+
+package com.telusku.javaapp;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telusku.model.Student;
+
+public class LauncApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Create configuration  object 
+		
+		 Configuration config = new Configuration();
+		 //step2  configure hibernate.cfg.xml  to configure object
+		 
+		 config.configure();
+		 //step 3. create Sessionfectory object from 
+		 
+		 //
+		SessionFactory sessionfactory = config.buildSessionFactory();
+		
+		//Step 4 . Create sesion object by doing sesionfactoty
+		
+		Session session = sessionfactory.openSession();
+		//Step 5. Begin the transaction with the session
+		
+		  Transaction transaction = session.beginTransaction();
+		  
+		  Student student = new Student();
+		  
+		  student.setSid(1);
+		  student.setSname("Sujon");
+		  student.setScity("Dhaka");
+		  //step 6 perform operation
+		  
+		  session.save(student);
+		  //step 7 : transaction
+		  transaction.commit();
+		  //step 8 : session close
+		  session.close();
+		  
+		  
+		  
+		
+
+	}
+
+}
+
+
+
+
+
+
+

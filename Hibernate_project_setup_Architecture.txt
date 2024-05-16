@@ -1,0 +1,8 @@
+In java file first need to create java entity  that is related to daabase table which have not any business logic. 
+
+Then Need to make cofiguration file Where mapping and other Database related connectivity are done.
+
+Then we need to create a conffuration object which is primarliy are null. Through the inbuild method configure() we will take  the the configuration file to configuration object.
+
+The we need to create sessionfactory object , In this session factory all kinds of object for database will be stored here. form the session factory we will take one of the session factory object which is session with the help of method opensession(). This session will actullay perform CRUD operation,  FOr Data retreival operation we can go to directly to the operation step from the session but for Non selective operation like delete, update and create we need to create another object which name is transaction object with the method of session.begintransection(). The we do the operation and close the session by doing the commit.
+

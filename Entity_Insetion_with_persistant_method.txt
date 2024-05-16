@@ -1,0 +1,145 @@
+Java-Entity_table:
+
+package com.telusku.model;
+
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="StudentInfo3")
+public class Student {
+	@Id
+	@Column(name="SID")
+	private int sid;
+	@Column(name="Sname")
+	private String sname ;
+	
+	@Column (name="Scity")
+	private String scity;
+
+	public Student() {
+		System.out.println("Hello from Hibernate");
+	}
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public String getScity() {
+		return scity;
+	}
+
+	public void setScity(String scity) {
+		this.scity = scity;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", scity=" + scity + "]";
+	}
+	
+
+}
+
+
+...........................................xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...................
+
+
+
+package com.telusku.javaapp;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telusku.model.Student;
+
+public class LaunchStandardApp {
+
+	public static void main(String[] args) {
+		
+		Configuration config = null;
+		SessionFactory sessionfactory = null;
+		Session session = null;
+		Transaction transaction = null;
+		boolean flag = false;
+		
+		config = new Configuration();
+		config.configure();
+	    sessionfactory = config.buildSessionFactory();
+	    session = sessionfactory.openSession();
+	    
+	    Student student = new Student();
+	    student.setSid(2);
+	    student.setScity("barishal");
+	    student.setSname("Bashir");
+	 
+	    
+	    
+	    try {
+	    	transaction = session.beginTransaction();
+	    	session.persist(student);
+	    	flag = true;
+	    }
+		
+	    catch(HibernateException e )
+	    {
+	    	e.printStackTrace();
+	    }
+	    catch (Exception e)
+	    {
+	    	e.printStackTrace();
+	    }
+	    
+	    finally {
+	    	if(flag== true)
+	    	{
+	    		transaction.commit();
+	    	}
+	    	else {
+	    		transaction.rollback();
+	    	}
+	    	session.close();
+	    	sessionfactory.close();
+	    }
+	}
+
+}
+..........................................................................................xxxxxxxxxxxxxxxxxxxxxxxxxxxx.............................
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">JDBC:mysql://localhost:3306/jdbclearning</property>
+        <property name="hibernate.connection.password">Ni@mul0707</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+         <property name="hibernate.hbm2ddl.auto">update</property>
+          <property name="hibernate.show_sql">true</property>
+          <property name="hibernate.format_sql">true</property>
+         <mapping class = "com.telusku.model.Student"/>
+    </session-factory>
+</hibernate-configuration>
+
+

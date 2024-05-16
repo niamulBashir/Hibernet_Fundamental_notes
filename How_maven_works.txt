@@ -1,0 +1,1 @@
+When I need any Maven dependencies, Maven first serach it in local repositroy called (.m2) it is found then added to the repository, if it is not found then it will be added search in MAven central and dowonload it.  Note There may be some vulnerable version which indicates by red and yellow color in dependency.Then it will be goneto real download form.

@@ -1,0 +1,4 @@
+To Map the the Java class to the Database table, first we need to clreate a class in java file , This class name is related to Database table name, And The field name  in the table that is
+also related to column name of the table . Then we need to  map the class name and filed name  for this reason  JPA is used which is java persistance API that have some specifications
+and it is implemented by ORM framework like Hibernate, Basically Hibernate is ORM framework that implements JPA  which is responsible for mapping java class to database.To communicate with
+Hibernate from the Java class , XML/annotations are used where class name, database table name, filed name and column name maping are providing in the XMl , additionally also connectivity details as like url, username and password. These mapping details are provided to ORM framework Hibernate Then Hibernate are resposible to commuicate with Database to provide this mappings with the help of JDBC.

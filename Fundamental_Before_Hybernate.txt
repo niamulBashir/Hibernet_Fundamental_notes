@@ -1,0 +1,27 @@
+Persistance : Storing the data or Managing the data for a long time is called persistance.
+
+1.File Operation(Storing in HDD)
+2.Database (Storing it  in database)
+
+Persistance Store  : It is place/Store where data will be  managed and saved for longer time period.
+
+1.File Operation(Storing in HDD)
+2.Database (Storing it  in databa) java.io*
+
+Persistance Data : The data of Persistance store is called 'Persistance Data'.
+
+Persistance opertion : Operations which are performed on "Persistace data". As example deleted, create , Update data.
+
+Persistnace Logic : The logic which is written for persistance operation  is called as "Persistance Logic".
+
+IO Streams logic().
+JDBC code (The technology name is JDBC APP)
+Hibernate code.
+Spring JDBC
+Spring ORM
+Spring DATA JPA.
+
+
+Persistance Technology : The Technology/ Framework Through which we write persistance Logic is called Persistance Technlogy/Framework.
+
+

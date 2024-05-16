@@ -1,0 +1,5 @@
+1.As java developer need to write sql query in class which is not friendly for java dveloper.
+2. If we want to switch from one database system to Another Database System , we need to change the code in JDBC although 98& are same.
+3. We need write continuous boilerplate template in JDBC which is alsways repitative.
+4. JDBC support  position not named concept.
+5.It does not support to store object in database as like many features of OOP like polymorphisom,Inheritance ABstraction.
